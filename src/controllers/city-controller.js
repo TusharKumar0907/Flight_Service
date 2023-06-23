@@ -8,7 +8,7 @@ const { StatusCodes } = require('http-status-codes');
 
 
 //  POST : /airplanes 
-//  req-body {modelNumber: 'airbus320', capacity: 200}
+//  req-body {name : city}
  
 async function CreateCity(req, res) {
 
@@ -66,7 +66,7 @@ async function deleteCity(req, res) {
 
     try{
         // console.log(req.body);
-        const cities = await AirplaneService.deleteCity(req.params.id);
+        const cities = await CityService.deleteCity(req.params.id);
         
         if( !cities ) {
             return res
@@ -99,7 +99,7 @@ async function getbyIDCity(req, res) {
 
     try{
         // console.log(req.body);
-        const city= await AirplaneService.getbyIDCity(req.params.id);
+        const city= await CityService.getbyIDCity(req.params.id);
 
         if( !city ) {
             return res

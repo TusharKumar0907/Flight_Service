@@ -11,16 +11,16 @@ const router = express.Router();
 
 //include the middlewares as well in order to check whether the request is valid or not
 
-//  /api/v1/airplanes  (post request)
+//  /api/v1/city  (post request)
 router.post('/', CityController.CreateCity);
 
-//  /api/v1/airplanes  (get request)
+//  /api/v1/city  (get request)
 router.get('/', CityController.getALLCity);
 
-//  /api/v1/airplanes/id  (delete request)
+//  /api/v1/city/id  (delete request)
 router.delete('/:id', CityController.deleteCity);
 
-//  /api/v1/airplanes/id  (get by id request)
+//  /api/v1/city/id  (get by id request)
 router.get('/:id', CityController.getbyIDCity);
 
 

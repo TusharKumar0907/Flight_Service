@@ -14,8 +14,10 @@ class CrudRepository {
 
     //if we want to insert something in the table , all this thing is also available in the sequelise documentation of model(table) query
     async create(data) {
+        console.log(data);
         try{
             const response = await this.model.create(data);
+            // console.log(response);
             return response;
         } catch(error) {
             Logger.error('Something went wrong in crud repo in create function');

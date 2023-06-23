@@ -3,7 +3,7 @@
 
 const  { CityRepository } = require('../repositories');
 
-//accessing the constructor of AirplaneRepositry
+//accessing the constructor of  CityRepositry
 
 const cityRepository = new CityRepository();
 

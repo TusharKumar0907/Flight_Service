@@ -1,9 +1,4 @@
-//services use repositories to interact with database
-//here we write business logic
-
 const  { CityRepository } = require('../repositories');
-
-//accessing the constructor of  CityRepositry
 
 const cityRepository = new CityRepository();
 

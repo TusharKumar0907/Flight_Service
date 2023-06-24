@@ -1,15 +1,11 @@
-//services use repositories to interact with database
-//here we write business logic
-
 const  { AirportRepository } = require('../repositories');
-
-//accessing the constructor of  AirportRepositry
 
 const airportRepository = new AirportRepository();
 
 async function createAirport(data) {
+    console.log(" Service ", data);
     try{
-        const airport = await AirportRepository.create(data);
+        const airport = await airportRepository.create(data);
         return airport;
     } catch(error) {
         throw error;
@@ -18,7 +14,7 @@ async function createAirport(data) {
 
 async function getAllAirport(data) {
     try{
-        const airport = await AirportRepository.getAll(data);
+        const airport = await airportRepository.getAll(data);
         return airport;
     } catch(error) {
         throw error;
@@ -27,7 +23,7 @@ async function getAllAirport(data) {
 
 async function deleteAirport(data) {
     try{
-        const airport = await AirportRepository.destroy(data);
+        const airport = await airportRepository.destroy(data);
         return airport;
     } catch(error) {
         throw error;
@@ -36,7 +32,7 @@ async function deleteAirport(data) {
 
 async function getbyIDAirport(data) {
     try{
-        const airport = await AirportRepository.get(data);
+        const airport = await airportRepository.get(data);
         return airport;
     } catch(error) {
         throw error;

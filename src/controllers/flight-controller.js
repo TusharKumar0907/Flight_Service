@@ -1,33 +1,35 @@
 // it connects with service
 
 const { response } = require("express");
-const { AirportService } = require("../services");
+const { FlightService } = require("../services");
 const { StatusCodes } = require('http-status-codes');
 
 
 
-
 //  POST : /airplanes 
-//  req-body {name: 'IGI', cityId: 5, code: 'DEL}
+//  req-body {name : city}
  
-async function CreateAirport(req, res) {
+async function CreateFlight(req, res) {
 
 try{
- 
-    const airport = await AirportService.createAirport({
-        name: req.body.name,
-        code: req.body.code,
-        address: req.body.address,
-        cityId: req.body.cityId
+    // console.log(req.body);
+    const flight = await FlightService.createFlight({
+        flightNumber: req.body.flightNumber,
+        airplaneId: req.body.airplaneId,
+        departureAirportId: req.body.departureAirportId,
+        arrivalAirportId: req.body.arrivalAirportId,
+        arrivalTime: req.body.arrivalTime,
+        departureTime: req.body.departureTime,
+        price: req.body.price,
+        boardingGate: req.body.boardingGate,
+        totalSeats: req.body.totalSeats
     });
-  
-    
     return res
     .status(StatusCodes.CREATED)
     .json({
         success:true,
         message: "done done",
-        data:airport
+        data:flight
     });
 } catch(error) {
     return res
@@ -42,17 +44,17 @@ try{
 
 
 
-async function getAllAirport(req, res) {
+async function getALLFlight(req, res) {
 
     try{
         // console.log(req.body);
-        const airport = await AirportService.getAllAirport();
+        const flight = await FlightService.getALLFlight();
         return res
         .status(StatusCodes.OK)
         .json({
             success:true,
             message: "see see",
-            data:airport
+            data:flight
         });
     } catch(error) {
         return res
@@ -67,17 +69,17 @@ async function getAllAirport(req, res) {
 
 
 
-async function deleteAirport(req, res) {
+async function deleteFlight(req, res) {
 
     try{
         // console.log(req.body);
-        const airport = await AirportService.deleteAirport(req.params.id);
+        const flight = await FlightService.deleteFlight(req.params.id);
         
-        if( !airport ) {
+        if( !flight ) {
             return res
             .status(StatusCodes.NOT_FOUND)
             .json({
-                message:"airport not found"
+                message:"flight not found"
             });
         }
         
@@ -86,7 +88,7 @@ async function deleteAirport(req, res) {
         .json({
             success:true,
             message: "delete ho gya",
-            data:airport
+            data:flight
         });
     } catch(error) {
         return res
@@ -100,17 +102,17 @@ async function deleteAirport(req, res) {
 }
 
 
-async function getbyIDAirport(req, res) {
+async function getbyIDFlight(req, res) {
 
     try{
         // console.log(req.body);
-        const airport = await AirportService.getbyIDAirport(req.params.id);
+        const flight = await FlightService.getbyIDFlight(req.params.id);
 
-        if( !airport ) {
+        if( !flight ) {
             return res
             .status(StatusCodes.NOT_FOUND)
             .json({
-                message:"airport not found"
+                message:"flight not found"
             });
         }
 
@@ -119,7 +121,7 @@ async function getbyIDAirport(req, res) {
         .json({
             success:true,
             message: "dekhlo",
-            data:airport
+            data:flight
         });
     } catch(error) {
         return res
@@ -135,10 +137,10 @@ async function getbyIDAirport(req, res) {
     
 
 module.exports = {
-    CreateAirport,
-    getAllAirport,
-    deleteAirport,
-    getbyIDAirport
+    CreateFlight,
+    getALLFlight,
+    deleteFlight,
+    getbyIDFlight
 }
 
 

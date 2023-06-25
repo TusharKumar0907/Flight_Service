@@ -47,8 +47,8 @@ try{
 async function getALLFlight(req, res) {
 
     try{
-        // console.log(req.body);
-        const flight = await FlightService.getALLFlight(req.data);
+      
+        const flight = await FlightService.getALLFlight(req.query);
         return res
         .status(StatusCodes.OK)
         .json({

@@ -133,14 +133,40 @@ async function getbyIDFlight(req, res) {
     }
     
 }
-    
+
+
+async function updateSeats(req, res) {
+    try {
+        console.log(req.body);
+        const response = await FlightService.updateSeats({
+            flightId: req.params.id,
+            seats: req.body.seats, 
+            dec: req.body.dec
+        });
+        return res
+        .json({
+            success:true,
+            message: "updated"
+        });
+
+    } catch(error) {
+        return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({
+            success:false,
+            message: "error",
+        });
+    }
+}
+   
     
 
 module.exports = {
     CreateFlight,
     getALLFlight,
     deleteFlight,
-    getbyIDFlight
+    getbyIDFlight,
+    updateSeats
 }
 
 

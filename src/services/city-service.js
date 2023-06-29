@@ -10,8 +10,6 @@ async function createCity(data) {
         throw error;
     }
 }
-
-
 async function getALLCity(data) {
     try{
         const city = await cityRepository.getAll(data);

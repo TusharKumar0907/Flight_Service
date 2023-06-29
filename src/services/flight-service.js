@@ -74,9 +74,21 @@ async function getbyIDFlight(data) {
 }
 
 
+async function updateSeats(data) {
+    try {
+        const response = await flightRepository.updateRemainingSeats(data.flightId, data.seats, data.dec);
+        return response;
+    } catch(error) {
+        // console.log(error);
+        throw error;
+    }
+}
+
+
 module.exports = {
     createFlight,
     getALLFlight,
     deleteFlight,
-    getbyIDFlight
+    getbyIDFlight,
+    updateSeats
 }
